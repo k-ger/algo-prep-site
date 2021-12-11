@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
     let _cards = new DataService().getFlashCards();
     let _algos = _cards.filter(x => x.cardType === CardType.ALGO);
-    let _dataStructures = _cards.filter(x => x.cardType === CardType.DATASTRUCTURE);
+    // let _dataStructures = _cards.filter(x => x.cardType === CardType.DATASTRUCTURE);
     
     setAlgos(_algos);
     // setDataStructures(_dataStructures);
