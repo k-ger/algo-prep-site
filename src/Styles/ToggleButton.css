@@ -1,0 +1,21 @@
+.float-right-button {
+  float: right;
+}
+
+.selected-button-icon {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.button-label-active {
+  opacity: 1;
+  text-decoration: unset;
+}
+
+.button-label-inactive {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
