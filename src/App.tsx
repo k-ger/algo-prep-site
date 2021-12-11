@@ -12,7 +12,7 @@ export enum AppMode {
 
 function App() {
   const [algos, setAlgos] = useState<FlashCard[]>([]);
-  const [dataStructures, setDataStructures] = useState<FlashCard[]>([]);
+  // const [dataStructures, setDataStructures] = useState<FlashCard[]>([]);
   const [card, setCard] = useState<FlashCard>();
   const [showAlgos, setShowAlgos] = useState(true);
   const [showDataStructures, setShowDataStructures] = useState(true);
@@ -25,7 +25,7 @@ function App() {
     let _dataStructures = _cards.filter(x => x.cardType === CardType.DATASTRUCTURE);
     
     setAlgos(_algos);
-    setDataStructures(_dataStructures);
+    // setDataStructures(_dataStructures);
     setCard(_algos[0]);
     // return () => {
     //   cleanup
