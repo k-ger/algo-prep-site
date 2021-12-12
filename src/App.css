@@ -1,11 +1,7 @@
-@import './Styles/Reset.css';
 @import './Styles/Card.css';
 @import './Styles/ToggleButton.css';
 @import './Styles/TopicItem.css';
 
-body {
-  background: linear-gradient(25deg, purple, darkblue);
-}
 
 .app {
   position: relative;
@@ -15,7 +11,7 @@ body {
 .app-header {
   padding: 10px 14px 10px 6px;
   background: #09102099;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .app-header button {
@@ -36,8 +32,7 @@ body {
 
 
 .app-header button svg {
-  height: 16px;
-  margin-right: 8px;
+  margin-right: 6px;
   vertical-align: sub;
 }
 

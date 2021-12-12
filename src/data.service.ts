@@ -113,6 +113,21 @@ export class DataService {
         </br></br>
         2. XOR Approach: x = x ^ y; y = x ^ y; x = x ^ y;`
       },
+      {
+        idt: _id++,
+        cardType: CardType.ALGO,
+        name: 'How can you tell if a string is a palindrome?',
+        description: `Trivial; helps to know string methods:
+        </br></br>
+        In JS:</br>
+        let pal = myString.split('').reverse().join('');
+        </br></br>
+        In C#:</br>
+        var pal = new string(myString.Reverse().ToArray());
+        </br>or</br>
+        var pal = string.Concat(myString.Reverse());
+        `
+      },
       // {
       //   idt: _id++,
       //   cardType: CardType.ALGO,

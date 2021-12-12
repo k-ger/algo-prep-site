@@ -2,7 +2,7 @@
   border-radius: 24px;
   border: 0px;
   background: linear-gradient(-155deg, lightblue, rgb(122, 217, 255));
-  min-height: 75vh;
+  min-height: 70vh;
   padding: 12px 18px;
   /* font-family: 'Open Sans', 'Helvetica Neue', sans-serif;  */
   font-family: Arial,'Open Sans', 'Helvetica Neue', sans-serif;
@@ -10,6 +10,7 @@
   color: #333;
   box-shadow: 3px 3px 12px 5px #3336;
   position: relative;
+  z-index: 1;
 }
 
 .card h3 {
@@ -28,9 +29,9 @@
 }
 
 .card h3 .q-indent svg{
-  color: #333;
+  color: darkblue;
   vertical-align: bottom;
-  height: 24px;
+  height: 1.6rem;
   margin-right: 6px;
 }
 

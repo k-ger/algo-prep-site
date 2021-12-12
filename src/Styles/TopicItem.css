@@ -10,14 +10,20 @@
 }
 
 .topic-container .topic-type {
-  flex-basis: 1;
+  display: flex;
   margin-right: 14px;
-  padding: 2px 10px;
   border-radius: 25px;
   background: linear-gradient(25deg, blue, darkblue);
-  color:#DDD;
+  color: #DDD;
   font-size: 1.1rem;
   align-self: center;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  max-width: 42px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .topic-container .topic-name {
