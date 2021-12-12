@@ -10,7 +10,7 @@
   color: #333;
   box-shadow: 3px 3px 12px 5px #3336;
   position: relative;
-  z-index: 1;
+  grid-column: 1/-1;
 }
 
 .card h3 {
@@ -41,7 +41,7 @@
 
 .card .fab {
   position: absolute;
-  padding: 38px 0px;
+  padding: 20px 0px;
   cursor: pointer;
 }
 
@@ -69,4 +69,12 @@
   height: 70%;
   top: 15%;
   bottom: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card .invisible-target svg {
+  height: 120px;
+  color: #66666620;
 }
