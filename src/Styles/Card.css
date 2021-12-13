@@ -77,4 +77,10 @@
 .card .invisible-target svg {
   height: 120px;
   color: #66666620;
+  opacity: 1;
+  transition: opacity ease 0.25s;
+}
+
+.card .invisible-target svg.hidden {
+  opacity: 0;
 }
