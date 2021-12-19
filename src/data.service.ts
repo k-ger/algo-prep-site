@@ -128,6 +128,29 @@ export class DataService {
         var pal = string.Concat(myString.Reverse());
         `
       },
+      {
+        idt: _id++,
+        cardType: CardType.ALGO,
+        name: 'How do you sort an array of objects by multiple properties?',
+        description: `
+        </br></br>
+        In JS:</br>
+        <code>
+        data.sort((a, b) => {          
+        </br>&ensp;  if (a.name === b.name) {
+        </br>&ensp;    &ensp;// Age is only important when names are the same
+        </br>&ensp;    &ensp;return b.age - a.age;
+        </br>&ensp;  }
+        </br>&ensp;  return a.name > b.name ? 1 : -1;
+        </br>});
+        </code>
+        </br></br>
+        In C#:</br>
+        <code>personList.OrderBy(x => x.Name).ThenBy(x => x.Age);</code>
+        </br>//if need to order by descending:</br>
+        <code>personList.OrderByDescending(x => x.Name).ThenByDescending(x => x.Age);</code>
+        `
+      },
       // {
       //   idt: _id++,
       //   cardType: CardType.ALGO,
