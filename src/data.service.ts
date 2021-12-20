@@ -73,6 +73,26 @@ export class DataService {
       {
         idt: _id++,
         cardType: CardType.ALGO,
+        name: "How do you reverse all the words in a sentence?",
+        description: `C#:</br>
+        <code>
+        string.Join(" ", inputString.Split(' ').Select(x => new String(x.Reverse().ToArray())));
+        </code>
+        </br></br>
+        JS:</br>
+        <code>
+        inputString.split("").reverse().join("").split(" ").reverse().join(" ") 
+        </code>
+        </br></br>
+        Python:</br>
+        <code>
+        ' '.join([''.join(list(reversed(w))) for w in inputString.split(' ')])
+        </code>
+        `,
+      },
+      {
+        idt: _id++,
+        cardType: CardType.ALGO,
         name: "How can you find out if a linked list is circular?",
         description: `2 pointers; tortoise/hare.  1 pointer moves 1 node forward, and the other moves 2 nodes forward.  
         If they ever point to the same node, it is circular.`,
