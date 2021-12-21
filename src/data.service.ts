@@ -153,7 +153,6 @@ export class DataService {
         cardType: CardType.ALGO,
         name: 'How do you sort an array of objects by multiple properties?',
         description: `
-        </br></br>
         In JS:</br>
         <code>
         data.sort((a, b) => {          
