@@ -12,20 +12,25 @@ export enum AppMode {
 
 function App() {
   const [algos, setAlgos] = useState<FlashCard[]>([]);
-  // const [dataStructures, setDataStructures] = useState<FlashCard[]>([]);
+  const [dataStructures, setDataStructures] = useState<FlashCard[]>([]);
+  const [sysDesign, setSysDesign] = useState<FlashCard[]>([]);
+
   const [card, setCard] = useState<FlashCard>();
   const [showAlgos, setShowAlgos] = useState(true);
   const [showDataStructures, setShowDataStructures] = useState(true);
+  const [showSysDesign, setShowSysDesign] = useState(true);
 
   const [selectedMode, setSelectedMode] = useState<AppMode>(AppMode.CARD);
 
   useEffect(() => {
     let _cards = new DataService().getFlashCards();
     let _algos = _cards.filter(x => x.cardType === CardType.ALGO);
-    // let _dataStructures = _cards.filter(x => x.cardType === CardType.DATASTRUCTURE);
+    let _dataStructures = _cards.filter(x => x.cardType === CardType.DATASTRUCTURE);
+    let _sysDesign = _cards.filter(x => x.cardType === CardType.SYS_DESIGN);
     
     setAlgos(_algos);
-    // setDataStructures(_dataStructures);
+    setDataStructures(_dataStructures);
+    setSysDesign(_sysDesign)
     setCard(_algos[0]);
     // return () => {
     //   cleanup
@@ -33,37 +38,63 @@ function App() {
   }, [])
 
   function showNextCard(inc: 1 | -1): void {
-    const currCardIdx = card ? algos.indexOf(card) : -1;
+    const cards = getAllApplicableTopics();
+    const currCardIdx = card ? cards.indexOf(card) : -1;
     if(inc === -1) {
-      let nextCardIdx = currCardIdx + inc < 0 ? algos.length - 1 : currCardIdx + inc;
-      setCard(algos[nextCardIdx]);
+      let nextCardIdx = currCardIdx + inc < 0 ? cards.length - 1 : currCardIdx + inc;
+      setCard(cards[nextCardIdx]);
     } else if (inc === 1) {
-      let nextCardIdx = currCardIdx + inc >= algos.length ? 0 : currCardIdx + inc;
-      setCard(algos[nextCardIdx]);
+      let nextCardIdx = currCardIdx + inc >= cards.length ? 0 : currCardIdx + inc;
+      setCard(cards[nextCardIdx]);
     }
   }
 
   //at least one of these has to be active at all times:
   function updateAlgos(val: boolean) {
-    if(!val && !showDataStructures) {
+    if(!val && !showDataStructures && !showSysDesign) {
       setShowDataStructures(true);
     }
     setShowAlgos(val);
   }
   function updateDataStructures(val: boolean) {
-    if(!val && !showAlgos) {
+    if(!val && !showAlgos && !showSysDesign) {
       setShowAlgos(true);
     }
     setShowDataStructures(val);
+  }
+  function updateSysDesign(val: boolean) {
+    if(!val && !showAlgos && !showDataStructures) {
+      setShowAlgos(true);
+    }
+    setShowSysDesign(val);
   }
 
   function selectCard(cardIdt: number, cardType: CardType) {
     if(cardType === CardType.ALGO) {
       setSelectedMode(AppMode.CARD);
       setCard(algos[cardIdt]);
+    } else if (cardType === CardType.DATASTRUCTURE) {
+      setSelectedMode(AppMode.CARD);
+      setCard(dataStructures[cardIdt]);
+    } else if (cardType === CardType.SYS_DESIGN) {
+      setSelectedMode(AppMode.CARD);
+      setCard(sysDesign[cardIdt]);
     }
   }
 
+  function getAllApplicableTopics(): FlashCard[] {
+    let tps: FlashCard[] = [];
+    if(showAlgos) {
+      tps = tps.concat(algos);
+    }
+    if(showDataStructures) {
+      tps = tps.concat(dataStructures);
+    }
+    if(showSysDesign) {
+      tps = tps.concat(sysDesign);
+    }
+    return tps;
+  }
 
   return (
     <div className="app">
@@ -82,14 +113,15 @@ function App() {
 
         <ToggleButton onUpdate={updateAlgos} buttonLabel='Algos' isChecked={showAlgos}></ToggleButton>
         <ToggleButton onUpdate={updateDataStructures} buttonLabel='DataStructures' isChecked={showDataStructures}></ToggleButton>
+        <ToggleButton onUpdate={updateSysDesign} buttonLabel='SysDesign' isChecked={showSysDesign}></ToggleButton>
 
       </header>
       <div className="container">
         {selectedMode === AppMode.CARD && card && <Card card={card} getNext={() => showNextCard(1)} getPrev={() => showNextCard(-1)}></Card>}
-        {selectedMode === AppMode.LIST && <TopicList topics={algos} onTopicSelected={selectCard}></TopicList>}
+        {selectedMode === AppMode.LIST && <TopicList topics={getAllApplicableTopics()} onTopicSelected={selectCard}></TopicList>}
       </div>
       <footer className='app-footer'>
-        &#169;2020 using Create React App w/Typescript
+        &#169;2022 using Create React App w/Typescript
       </footer>
     </div>
   );

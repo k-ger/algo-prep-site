@@ -12,7 +12,7 @@ const TopicList: FunctionComponent<TopicListParams> = (props) => {
   return (
     <>
       {props.topics.map((t) => {
-        return <TopicItem key={t.idt} card={t} onSelected={props.onTopicSelected}></TopicItem>
+        return <TopicItem key={`${t.idt},${t.cardType}`} card={t} onSelected={props.onTopicSelected}></TopicItem>
       })}
     </>
   )
